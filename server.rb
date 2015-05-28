@@ -3,7 +3,7 @@ require "pg"
 require "pry"
 
 get "/" do
-  erb :index, locals: {}, layout: false
+  erb :index, locals: {}
 end
 
 get "/movies" do

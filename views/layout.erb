@@ -6,10 +6,15 @@
 </head>
   <body>
     <div id="header">
-      <a href="/movies">Movies</a>
-      |
-      <a href="/actors">Actors</a>
+      <a href="/movies">
+        <img src="/images/movie.png" alt="Movies" />
+      </a>
+      <a href="/actors">
+        <img src="/images/actor.png" alt="Actors" />
+      </a>
     </div>
-    <%= yield %>
+    <div id="master_container">
+      <%= yield %>
+    </div>
   </body>
 </html>
