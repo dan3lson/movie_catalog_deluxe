@@ -2,13 +2,13 @@
   <%= performances[0]["name"] %>
 </h1>
 
-<h3>Movie --> Character</h3>
+<h3>Movie &#8594; Character</h3>
 
 <% performances.each do |movie| %>
   <a href="/movies/<%= movie["id"] %>">
     <%= movie["title"] %>
   </a>
-  -->
+  &#8594;
   <%= movie["character"] %>
   <br/>
 <% end %>

@@ -12,13 +12,13 @@
   Genre: <%= movie["genre"] %>
 <% end %>
 
-<h3>Actor --> Character</h3>
+<h3>Actor &#8594; Character</h3>
 
 <% movies_cast.each do |movie| %>
   <a href="/actors/<%= movie["id"] %>">
     <%= movie["actor"] %>
   </a>
-  -->
+  &#8594;
   <%= movie["character"] %>
   <br/>
 <% end %>

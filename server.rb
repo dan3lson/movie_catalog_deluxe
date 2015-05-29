@@ -18,6 +18,20 @@ def sql(statement)
   all = all.to_a
 end
 
+def actor_info(actor_id)
+  sql("
+    SELECT
+      actors.name,
+      movies.id,
+      movies.title,
+      cast_members.character
+    FROM cast_members
+    JOIN movies ON cast_members.movie_id = movies.id
+    JOIN actors ON cast_members.actor_id = actors.id
+    WHERE actors.id = '#{actor_id}'
+  ")
+end
+
 def movies_info
 # why doesn't it work if studio and genre are swapped?
   sql("
@@ -32,16 +46,7 @@ def movies_info
     JOIN genres ON movies.genre_id = genres.id
     JOIN studios ON movies.studio_id = studios.id
     ORDER BY title
-    LIMIT 100
   ")
-end
-
-get "/" do
-  erb :index, locals: {}
-end
-
-get "/movies" do
-  erb :"/movies/index", locals: { movies: movies_info }
 end
 
 def movie_actors(movie_id)
@@ -53,6 +58,15 @@ def movie_actors(movie_id)
     WHERE movies.id = '#{movie_id}'
   ")
 end
+
+get "/" do
+  erb :index, locals: {}
+end
+
+get "/movies" do
+  erb :"/movies/index", locals: { movies: movies_info }
+end
+
 get "/movies/:movie" do
   movie_id = params[:movie]
   movies_details = sql("
@@ -68,7 +82,6 @@ get "/movies/:movie" do
     JOIN studios ON movies.studio_id = studios.id
     WHERE movies.id = '#{movie_id}'
     ORDER BY title
-    LIMIT 100
   ")
   erb :"/movies/show", locals: {
     movies_details: movies_details,
@@ -77,23 +90,17 @@ get "/movies/:movie" do
 end
 
 get "/actors" do
-  actors = sql("SELECT * FROM actors ORDER BY name LIMIT 100")
+  actors = sql("
+    SELECT *
+    FROM actors
+    ORDER BY name
+  ")
   erb :"/actors/index", locals: { actors: actors }
 end
 
 get "/actors/:id" do
   actor_id = params[:id]
-  performances = sql("
-    SELECT
-      actors.name,
-      movies.id,
-      movies.title,
-      cast_members.character
-    FROM cast_members
-    JOIN movies ON cast_members.movie_id = movies.id
-    JOIN actors ON cast_members.actor_id = actors.id
-    WHERE actors.id = '#{actor_id}'
-  ")
+  performances = actor_info(actor_id)
 
   erb :"/actors/show", locals: {
     actor_id: actor_id,
