@@ -40,11 +40,11 @@ def movies_info
       movies.title,
       movies.year,
       movies.rating,
-      studios.name AS studio,
-      genres.name AS genre
+      genres.name AS genre,
+      studios.name AS studio
     FROM movies
-    JOIN genres ON movies.genre_id = genres.id
     JOIN studios ON movies.studio_id = studios.id
+    JOIN genres ON movies.genre_id = genres.id
     ORDER BY title
   ")
 end
