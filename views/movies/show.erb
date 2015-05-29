@@ -1,3 +1,24 @@
 <h1>
-  Movie: <%= movie %>
+  <%= movies_details[0]["title"] %>
 </h1>
+
+<% movies_details.each do |movie| %>
+  Year: <%= movie["year"] %>
+  <br/>
+  Rating: <%= movie["rating"] %>
+  <br/>
+  Studio: <%= movie["studio"] %>
+  <br/>
+  Genre: <%= movie["genre"] %>
+<% end %>
+
+<h3>Actor --> Character</h3>
+
+<% movies_cast.each do |movie| %>
+  <a href="/actors/<%= movie["id"] %>">
+    <%= movie["actor"] %>
+  </a>
+  -->
+  <%= movie["character"] %>
+  <br/>
+<% end %>

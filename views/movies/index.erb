@@ -1,10 +1,45 @@
 <h1>
-  All movies
+  Movies
 </h1>
 
+<table>
+  <th>
+    Movie
+  </th>
+  <th>
+    Year
+  </th>
+  <th>
+    Rating
+  </th>
+  <th>
+    Genre
+  </th>
+  <th>
+    Studio
+  </th>
+
 <% movies.each do |movie| %>
-  <a href="/movies/<%= movie["title"] %>">
-    <%= movie["title"] %>
-  </a>
-  <br/>
+  <tr>
+    <td>
+      <a href="/movies/<%= movie["id"] %>">
+        <%= movie["title"] %>
+      </a>
+    </td>
+    <td>
+      <%= movie["year"] %>
+    </td>
+    <td>
+      <%= movie["rating"] %>
+    </td>
+    <td>
+      <%= movie["genre"] %>
+    </td>
+    <td>
+      <%= movie["studio"] %>
+    </td>
+  </tr>
 <% end %>
+</table>
+
+<!-- mb@dunbelo -->

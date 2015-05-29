@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.1em;
 }
 #master_container {
   padding: 20px;
@@ -15,20 +16,26 @@ body {
   padding: 20px;
   text-align: center;
   border-top: #ed197b 3px solid;
+  position: fixed;
+  width: 100%;
 }
 a {
   text-decoration: none;
-}
-#header > a {
-  color: #FFF;
-  border-right:
-}
-#header a:hover {
-  color: #3d9ec6;
+  color: rgb(203, 222, 230);
+  font-weight: bold;
 }
 h1 {
   color: #ed197b;
+  margin-top: 15%;
 }
 small {
   color: lightgray;
+}
+th {
+  text-align: left;
+  padding-right: 60px;
+}
+td {
+  padding-right: 60px;
+  border-bottom: 1px solid #F2F2F2;
 }
